@@ -140,9 +140,9 @@ let curCode = '';
 
 // Prize definitions ordered biggest to smallest
 const ALL_PRIZES = [
-  { amount:'€100', code:'YELODIE100VIP',  desc:'Sconto esclusivo 100€! Sei tra i fortunatissimi!', emoji:'👑', ballIds:['b100'],                check: n => n % 100000 === 0 },
-  { amount:'€50',  code:'YELODIE50LUCKY', desc:'Hai vinto 50€ di sconto su yelodie.it!',           emoji:'🔥', ballIds:['b50'],                 check: n => n % 3000   === 0 },
-  { amount:'€10',  code:'YELODIE10BOLD',  desc:'Ottimo! Hai conquistato 10€ di sconto.',            emoji:'⭐', ballIds:['b10a','b10b'],         check: n => n % 100    === 0 },
+  { amount:'€100', code:'YELODIE100VIP',  desc:'Sconto esclusivo 100€! Sei tra i fortunatissimi!', emoji:'👑', ballIds:['b100'],                check: n => n % 7 === 0 },
+  { amount:'€50',  code:'YELODIE50LUCKY', desc:'Hai vinto 50€ di sconto su yelodie.it!',           emoji:'🔥', ballIds:['b50'],                 check: n => n % 6   === 0 },
+  { amount:'€10',  code:'YELODIE10BOLD',  desc:'Ottimo! Hai conquistato 10€ di sconto.',            emoji:'⭐', ballIds:['b10a','b10b'],         check: n => n % 5    === 0 },
   { amount:'€5',   code:'YELODIE5OFF',    desc:'Hai pescato 5€ di sconto su yelodie.it!',           emoji:'🎉', ballIds:['b5a','b5b','b5c','b5d'], check: null }, // special: every 3-4
 ];
 
