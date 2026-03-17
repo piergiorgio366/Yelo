@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>Yelodie × Cosmo Prof Bologna</title>
+  <title>Yelodie × Evento Esclusivo</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
 </head>
@@ -17,7 +17,7 @@
       <span class="event-tag">✦ Evento Esclusivo ✦</span>
       <h1 class="hero-title">
         YELODIE
-        <span class="accent">COSMO PROF</span>
+        <span class="accent">Pesca Lo Sconto</span>
       </h1>
       <p class="hero-subtitle">PESCA LO SCONTO</p>
       <div class="hero-info">
@@ -144,12 +144,12 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 Yelodie · Cosmo Prof Bologna</p>
+    <p>© 2026 Yelodie · Evento Esclusivo</p>
     <p>Codici validi su <a href="https://yelodie.it">yelodie.it</a></p>
   </footer>
 
 <script>
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbz6n227CCBmY5ccU_2HnYTy44icgPD5qvLztXLBLf9oOR94s-9JJwu9fPw3a_NuhXB28g/exec';
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxO4xCHRSgabevQDEUyM0PKO_aLv2AO-v0N8c-eRLVL5BZCHzT-ZhnQfgWT4xios9XHCg/exec';
 const KEY       = 'yelodie_plays';
 const KEY_WON   = 'yelodie_won';
 const KEY_USER  = 'yelodie_user';
@@ -168,12 +168,12 @@ let clawSpeed    = 0.4;    // % per frame
 let animFrame    = null;
 
 const ALL_PRIZES = [
-  { amount:'50%', code:'SHOW50NXT',   desc:'INCREDIBILE! 50% extra — totale 70% su tutto!', emoji:'👑', ballIds:['b50'],              catchZone: 0.1 },
-  { amount:'45%', code:'EXPO45WQR',   desc:'Fantastico! 45% extra sul sito Yelodie!',        emoji:'🔥', ballIds:['b45'],              catchZone: 0.5 },
-  { amount:'40%', code:'FIERA40KPM',  desc:'Wow! 40% di sconto extra!',                      emoji:'💎', ballIds:['b40'],              catchZone: 1   },
-  { amount:'35%', code:'BOLOGNA35ZV', desc:'Ottimo! 35% extra da usare su yelodie.it!',      emoji:'⭐', ballIds:['b35'],              catchZone: 1.5 },
-  { amount:'30%', code:'PROF30XNQ',   desc:'Bravo! Hai pescato il 30% di sconto extra!',     emoji:'🎯', ballIds:['b30a','b30b'],      catchZone: 2   },
-  { amount:'25%', code:'COSMO25FBK',  desc:'Hai pescato il 25% extra! Sommalo al 20%!',      emoji:'🎉', ballIds:['b25a','b25b','b25c','b25d'], catchZone: 3   },
+  { amount:'50%', code:'SHOW50NXT',   desc:'INCREDIBILE! 50% extra — totale 70% su tutto!', emoji:'👑', ballIds:['b50'],              catchZone: 0.001 },
+  { amount:'45%', code:'EXPO45WQR',   desc:'Fantastico! 45% extra sul sito Yelodie!',        emoji:'🔥', ballIds:['b45'],              catchZone: 0.005 },
+  { amount:'40%', code:'FIERA40KPM',  desc:'Wow! 40% di sconto extra!',                      emoji:'💎', ballIds:['b40'],              catchZone: 0.015   },
+  { amount:'35%', code:'BOLOGNA35ZV', desc:'Ottimo! 35% extra da usare su yelodie.it!',      emoji:'⭐', ballIds:['b35'],              catchZone: 0.1 },
+  { amount:'30%', code:'PROF30XNQ',   desc:'Bravo! Hai pescato il 30% di sconto extra!',     emoji:'🎯', ballIds:['b30a','b30b'],      catchZone: 0.3  },
+  { amount:'25%', code:'COSMO25FBK',  desc:'Hai pescato il 25% extra! Sommalo al 20%!',      emoji:'🎉', ballIds:['b25a','b25b','b25c','b25d'], catchZone: 1  },
 ];
 
 // Posizioni delle palline (left% del centro pallina)
