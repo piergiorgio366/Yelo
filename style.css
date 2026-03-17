@@ -29,7 +29,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 20px 20px 90px;
+  padding: 5px 20px 90px;
   overflow: hidden;
   background: var(--darker);
 }
@@ -61,7 +61,7 @@ body {
   text-transform: uppercase;
   padding: 10px 22px;
   border-radius: 4px;
-  margin-bottom: 20px;
+  margin-bottom: 6px;
   animation: fdDown .6s ease both;
 }
 .hero-title {
@@ -83,7 +83,7 @@ body {
   letter-spacing: .22em;
   text-transform: uppercase;
   color: #ffffff;
-  margin-top: 16px;
+  margin-top: 6px;
   animation: fdDown .7s ease .2s both;
 }
 .hero-info {
@@ -91,7 +91,7 @@ body {
   gap: 36px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 16px;
+  margin-top: 6px;
   animation: fdDown .7s ease .3s both;
 }
 .info-label {
