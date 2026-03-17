@@ -93,7 +93,7 @@
 
     <!-- No win message -->
     <div class="no-win-box" id="noWinBox" style="display:none;">
-      <p class="no-win-text" id="noWinText">Non hai vinto! Prova a vincere €10 🎯</p>
+      <p class="no-win-text" id="noWinText">Non hai vinto! Prova a vincere i premi 🎯</p>
     </div>
 
     <!-- Ultimo premio vinto -->
@@ -141,8 +141,8 @@ let curCode = '';
 
 // Prize definitions ordered biggest to smallest
 const ALL_PRIZES = [
-  { amount:'€100', code:'YELODIE100VIP',  desc:'Sconto esclusivo 100€! Sei tra i fortunatissimi!', emoji:'👑', ballIds:['b100'],                check: n => n % 100000 === 0 },
-  { amount:'€50',  code:'YELODIE50LUCKY', desc:'Hai vinto 50€ di sconto su yelodie.it!',           emoji:'🔥', ballIds:['b50'],                 check: n => n % 3000   === 0 },
+  { amount:'€100', code:'YELODIE100VIP',  desc:'Sconto esclusivo 100€! Sei tra i fortunatissimi!', emoji:'👑', ballIds:['b100'],                check: n => n % 1500 === 0 },
+  { amount:'€50',  code:'YELODIE50LUCKY', desc:'Hai vinto 50€ di sconto su yelodie.it!',           emoji:'🔥', ballIds:['b50'],                 check: n => n % 550   === 0 },
   { amount:'€10',  code:'YELODIE10BOLD',  desc:'Ottimo! Hai conquistato 10€ di sconto.',            emoji:'⭐', ballIds:['b10a','b10b'],         check: n => n % 100    === 0 },
   { amount:'€5',   code:'YELODIE5OFF',    desc:'Hai pescato 5€ di sconto su yelodie.it!',           emoji:'🎉', ballIds:['b5a','b5b','b5c','b5d'], check: null }, // special: every 3-4
 ];
@@ -281,7 +281,7 @@ async function startClaw() {
     const noWinBox  = document.getElementById('noWinBox');
     const noWinText = document.getElementById('noWinText');
     if (next) {
-      noWinText.textContent = `Non hai vinto! Prova a vincere ${next.amount} 🎯`;
+      noWinText.textContent = `Non hai vinto! Prova a vincere i premi 🎯`;
     } else {
       noWinText.textContent = 'Hai già vinto tutti i premi! 🏆';
     }
