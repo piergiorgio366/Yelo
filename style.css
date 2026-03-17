@@ -581,7 +581,7 @@ footer a { color: var(--pink); text-decoration: none; }
   margin-bottom: 10px;
 }
 .form-desc {
-  font-size: 1rem;
+  font-size: 1.5rem;
   color: #fff;
   line-height: 1.7;
   margin-bottom: 26px;
@@ -816,7 +816,7 @@ footer a { color: var(--pink); text-decoration: none; }
 }
 .banner-sub {
   font-size: .78rem;
-  color: rgba(255,255,255,.45);
+  color: #ffffff;
   margin-top: 4px;
 }
 .banner-right {
@@ -839,8 +839,8 @@ footer a { color: var(--pink); text-decoration: none; }
 }
 .banner-code:active { background: rgba(255,229,0,.18); }
 .banner-copy-hint {
-  font-size: .68rem;
-  color: rgba(255,255,255,.3);
+  font-size: .78rem;
+  color: #ffffff;
   margin-top: 5px;
 }
 
