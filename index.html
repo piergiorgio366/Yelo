@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Yelodie × Cosmo Prof Bologna</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <span class="event-tag">✦ Evento Esclusivo ✦</span>
+      <h1 class="hero-title">
+        YELODIE
+        <span class="accent">COSMO PROF</span>
+      </h1>
+      <p class="hero-subtitle">Bologna · Fiera</p>
+      <div class="hero-info">
+        <div class="info-block"><span class="info-label">Edizione</span><span class="info-value">2026</span></div>
+        <div class="info-block"><span class="info-label">Location</span><span class="info-value">Bologna</span></div>
+        <div class="info-block"><span class="info-label">Brand</span><span class="info-value">Yelodie</span></div>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      🎮 GIOCA E VINCI
+      <div class="scroll-arrow">↓</div>
+    </div>
+  </section>
+
+  <!-- FORM EMAIL -->
+  <section class="form-section" id="formSection">
+    <div class="form-box">
+      <div class="form-icon">🎯</div>
+      <h2 class="form-title">HAI GIÀ IL 20%!</h2>
+      <p class="form-desc">Inserisci i tuoi dati e gioca per vincere uno sconto <strong>extra fino al 50%</strong></p>
+      <div class="form-fields">
+        <input type="text"  id="inputNome"  class="form-input" placeholder="Il tuo nome" autocomplete="given-name" />
+        <input type="email" id="inputEmail" class="form-input" placeholder="La tua email" autocomplete="email" />
+      </div>
+      <button class="form-btn" onclick="submitForm()">GIOCA ADESSO →</button>
+      <p class="form-privacy">Usato solo per inviarti il codice sconto. Nessuno spam.</p>
+    </div>
+  </section>
+
+  <!-- ARCADE -->
+  <section class="arcade-section" id="arcadeSection" style="display:none;">
+    <span class="section-label">✦ Mini Gioco ✦</span>
+    <h2 class="section-title">PESCA<br>LO SCONTO</h2>
+    <p class="section-desc">
+      Premi <strong>GIOCA</strong> per far partire la gru, poi premi <strong>FERMA</strong> al momento giusto!
+    </p>
+
+    <div class="machine-wrapper">
+      <div class="machine" id="machine">
+        <div class="machine-top">
+          <span class="machine-brand">YELODIE CLAW</span>
+          <div class="machine-lights">
+            <div class="light"></div><div class="light"></div>
+            <div class="light"></div><div class="light"></div>
+          </div>
+        </div>
+
+        <div class="machine-glass" id="glass">
+          <div class="claw-rail"></div>
+          <!-- Claw -->
+          <div class="claw-arm" id="clawArm">
+            <div class="claw-wire" id="clawWire"></div>
+            <div class="claw-head">
+              <div class="claw-prong lp"></div>
+              <div class="claw-prong mp"></div>
+              <div class="claw-prong rp"></div>
+            </div>
+          </div>
+          <!-- Balls -->
+          <div class="pb ball-25" id="b25a" style="left:8%;bottom:62%">25%</div>
+          <div class="pb ball-25" id="b25b" style="left:30%;bottom:45%">25%</div>
+          <div class="pb ball-25" id="b25c" style="left:54%;bottom:58%">25%</div>
+          <div class="pb ball-25" id="b25d" style="left:72%;bottom:40%">25%</div>
+          <div class="pb ball-30" id="b30a" style="left:18%;bottom:26%">30%</div>
+          <div class="pb ball-30" id="b30b" style="left:62%;bottom:24%">30%</div>
+          <div class="pb ball-35" id="b35"  style="left:40%;bottom:12%">35%</div>
+          <div class="pb ball-40" id="b40"  style="left:78%;bottom:10%">40%</div>
+          <div class="pb ball-45" id="b45"  style="left:22%;bottom:10%">45%</div>
+          <div class="pb ball-50" id="b50"  style="left:50%;bottom:6%">50%</div>
+        </div>
+
+        <div class="machine-bottom">
+          <button class="play-btn" id="playBtn" onclick="handleBtn()">🎮 GIOCA</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- No win -->
+    <div class="no-win-box" id="noWinBox" style="display:none;">
+      <p class="no-win-text" id="noWinText">Non hai preso niente! Riprova 🎯</p>
+    </div>
+
+    <!-- Ultimo premio -->
+    <div class="last-prize-box" id="lastPrizeBox" style="display:none;">
+      <div class="last-prize-label">🏆 SCONTO EXTRA VINTO</div>
+      <div class="last-prize-amount" id="lastPrizeAmount">25%</div>
+      <div class="last-prize-sub">Sommalo al tuo 20% garantito!</div>
+      <div class="last-prize-code" id="lastPrizeCode" onclick="copyLastCode()">COSMO25FBK</div>
+      <p class="copy-hint">Tocca il codice per copiarlo</p>
+    </div>
+  </section>
+
+  <!-- MODAL VINTO -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-bar"></div>
+      <div class="modal-emoji" id="mEmoji">🎉</div>
+      <div class="modal-title">HAI VINTO!</div>
+      <div class="modal-prize" id="mPrize">25%</div>
+      <p class="modal-desc" id="mDesc">Usa il codice su yelodie.it</p>
+      <div class="modal-code-label">IL TUO CODICE SCONTO</div>
+      <div class="modal-code" id="mCode" onclick="copyCode()">COSMO25FBK</div>
+      <p class="copy-hint">Tocca per copiare</p>
+      <button class="modal-close" onclick="closeModal()">Chiudi →</button>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">✓ Copiato!</div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Yelodie · Cosmo Prof Bologna</p>
+    <p>Codici validi su <a href="https://yelodie.it">yelodie.it</a></p>
+  </footer>
+
+<script>
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbz6n227CCBmY5ccU_2HnYTy44icgPD5qvLztXLBLf9oOR94s-9JJwu9fPw3a_NuhXB28g/exec';
+const KEY       = 'yelodie_plays';
+const KEY_WON   = 'yelodie_won';
+const KEY_USER  = 'yelodie_user';
+
+let plays    = parseInt(localStorage.getItem(KEY) || '0');
+let wonList  = (localStorage.getItem(KEY_WON) || '').split(',').filter(Boolean);
+let userData = JSON.parse(localStorage.getItem(KEY_USER) || 'null');
+let busy     = false;
+let curCode  = '';
+
+// Stato gru
+let clawMoving   = false;  // sta scorrendo sinistra/destra
+let clawX        = 50;     // posizione % attuale
+let clawDir      = 1;      // direzione: 1=destra, -1=sinistra
+let clawSpeed    = 0.4;    // % per frame
+let animFrame    = null;
+
+const ALL_PRIZES = [
+  { amount:'50%', code:'SHOW50NXT',   desc:'INCREDIBILE! 50% extra — totale 70% su tutto!', emoji:'👑', ballIds:['b50'],              catchZone: 0.1 },
+  { amount:'45%', code:'EXPO45WQR',   desc:'Fantastico! 45% extra sul sito Yelodie!',        emoji:'🔥', ballIds:['b45'],              catchZone: 0.5 },
+  { amount:'40%', code:'FIERA40KPM',  desc:'Wow! 40% di sconto extra!',                      emoji:'💎', ballIds:['b40'],              catchZone: 1   },
+  { amount:'35%', code:'BOLOGNA35ZV', desc:'Ottimo! 35% extra da usare su yelodie.it!',      emoji:'⭐', ballIds:['b35'],              catchZone: 1.5 },
+  { amount:'30%', code:'PROF30XNQ',   desc:'Bravo! Hai pescato il 30% di sconto extra!',     emoji:'🎯', ballIds:['b30a','b30b'],      catchZone: 2   },
+  { amount:'25%', code:'COSMO25FBK',  desc:'Hai pescato il 25% extra! Sommalo al 20%!',      emoji:'🎉', ballIds:['b25a','b25b','b25c','b25d'], catchZone: 3   },
+];
+
+// Posizioni delle palline (left% del centro pallina)
+const BALL_POSITIONS = {
+  b25a: 8+3,  b25b: 30+3, b25c: 54+3, b25d: 72+3,
+  b30a: 18+3, b30b: 62+3,
+  b35: 40+3,
+  b40: 78+3,
+  b45: 22+3,
+  b50: 50+3
+};
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+// ── INIT ──────────────────────────────────────────────
+if (userData) showArcade();
+
+wonList.forEach(amt => hideBalls(amt));
+
+const lastWon = localStorage.getItem('yelodie_last_won');
+if (lastWon) {
+  try {
+    const lw = JSON.parse(lastWon);
+    showLastPrize(lw.amount, lw.code);
+  } catch(e) {}
+}
+
+// ── FORM ──────────────────────────────────────────────
+function submitForm() {
+  const nome  = document.getElementById('inputNome').value.trim();
+  const email = document.getElementById('inputEmail').value.trim();
+
+  if (!nome) { showToast('Inserisci il tuo nome!'); return; }
+  if (!email || !email.includes('@')) { showToast('Email non valida!'); return; }
+
+  userData = { nome, email };
+  localStorage.setItem(KEY_USER, JSON.stringify(userData));
+  showArcade();
+}
+
+function showArcade() {
+  document.getElementById('formSection').style.display  = 'none';
+  document.getElementById('arcadeSection').style.display = 'flex';
+}
+
+// ── CLAW MOVEMENT ─────────────────────────────────────
+function startClawMovement() {
+  clawMoving = true;
+  clawX      = 10;
+  clawDir    = 1;
+  clawSpeed  = 0.35;
+  moveClaw();
+}
+
+function moveClaw() {
+  if (!clawMoving) return;
+
+  clawX += clawDir * clawSpeed;
+  if (clawX >= 90) { clawX = 90; clawDir = -1; }
+  if (clawX <= 10) { clawX = 10; clawDir =  1; }
+
+  const arm = document.getElementById('clawArm');
+  const gw  = document.getElementById('glass').offsetWidth;
+  const offset = (clawX / 100) * gw - gw / 2;
+  arm.style.transition = 'none';
+  arm.style.transform  = `translateX(calc(-50% + ${offset}px))`;
+
+  animFrame = requestAnimationFrame(moveClaw);
+}
+
+function stopClawMovement() {
+  clawMoving = false;
+  if (animFrame) cancelAnimationFrame(animFrame);
+}
+
+// ── BUTTON HANDLER ────────────────────────────────────
+function handleBtn() {
+  if (busy) return;
+
+  const btn = document.getElementById('playBtn');
+
+  if (!clawMoving) {
+    // Avvia movimento
+    document.getElementById('noWinBox').style.display = 'none';
+    btn.textContent = '✋ FERMA!';
+    btn.className   = 'play-btn stop-btn';
+    startClawMovement();
+  } else {
+    // Ferma e scendi
+    stopClawMovement();
+    btn.disabled = true;
+    btn.textContent = '⏳ ...';
+    dropClaw();
+  }
+}
+
+// ── DROP & CATCH ──────────────────────────────────────
+async function dropClaw() {
+  busy = true;
+  plays++;
+  localStorage.setItem(KEY, plays);
+
+  const arm  = document.getElementById('clawArm');
+  const wire = document.getElementById('clawWire');
+  const mach = document.getElementById('machine');
+
+  // Determina quale pallina è sotto la gru
+  const prize = getClosestPrize(clawX);
+
+  // Scendi
+  wire.style.transition = 'height .45s ease-in';
+  wire.style.height = '160px';
+  arm.classList.add('grab');
+  await sleep(500);
+
+  if (prize) {
+    // PRESA! Aggancia pallina
+    const grabbed = createGrabbedBall(prize, arm);
+    await sleep(300);
+
+    // Risali
+    wire.style.transition = 'height .5s ease-out';
+    wire.style.height = '26px';
+    await sleep(560);
+
+    // Shake
+    mach.classList.add('shake');
+    await sleep(430);
+    mach.classList.remove('shake');
+
+    arm.classList.remove('grab');
+    if (grabbed) grabbed.remove();
+
+    // Registra vincita
+    wonList.push(prize.amount);
+    localStorage.setItem(KEY_WON, wonList.join(','));
+    localStorage.setItem('yelodie_last_won', JSON.stringify({amount: prize.amount, code: prize.code}));
+    hideBalls(prize.amount);
+
+    // Traccia su Sheet
+    trackEvent('VINTO', prize.amount, prize.code);
+
+    fireParticles();
+    openModal(prize);
+    showLastPrize(prize.amount, prize.code);
+
+  } else {
+    // Mancato
+    await sleep(300);
+    wire.style.transition = 'height .45s ease-out';
+    wire.style.height = '26px';
+    await sleep(500);
+
+    mach.classList.add('shake');
+    await sleep(430);
+    mach.classList.remove('shake');
+    arm.classList.remove('grab');
+
+    // Traccia su Sheet
+    trackEvent('NON VINTO', '', '');
+
+    // Messaggio
+    const next = getNextTarget();
+    const box  = document.getElementById('noWinBox');
+    const txt  = document.getElementById('noWinText');
+    txt.textContent = next
+      ? `Non hai preso niente! Riprova per il ${next.amount} 🎯`
+      : 'Hai già vinto tutti i premi! 🏆';
+    box.style.display = 'block';
+  }
+
+  // Reset bottone
+  const btn = document.getElementById('playBtn');
+  btn.disabled    = false;
+  btn.className   = 'play-btn';
+  btn.textContent = '🎮 GIOCA';
+
+  // Riporta gru al centro
+  arm.style.transition = 'transform .5s ease';
+  arm.style.transform  = 'translateX(-50%)';
+  clawX = 50;
+
+  busy = false;
+}
+
+// ── PRIZE DETECTION ───────────────────────────────────
+function getClosestPrize(cx) {
+  const avail = ALL_PRIZES.filter(p => !wonList.includes(p.amount));
+
+  let best = null;
+  let bestDist = Infinity;
+
+  avail.forEach(prize => {
+    prize.ballIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el || el.style.opacity === '0') return;
+      const ballCenter = BALL_POSITIONS[id];
+      const dist = Math.abs(cx - ballCenter);
+      if (dist < prize.catchZone && dist < bestDist) {
+        bestDist = dist;
+        best = prize;
+      }
+    });
+  });
+
+  return best;
+}
+
+function getNextTarget() {
+  const avail = ALL_PRIZES.filter(p => !wonList.includes(p.amount));
+  return avail.length ? avail[avail.length - 1] : null;
+}
+
+// ── TRACKING ──────────────────────────────────────────
+function trackEvent(esito, premio, codice) {
+  if (!userData) return;
+  try {
+    const params = new URLSearchParams({
+      nome:    userData.nome,
+      email:   userData.email,
+      esito:   esito,
+      premio:  premio,
+      codice:  codice,
+      giocata: plays
+    });
+    const img = new Image();
+    img.src = SHEET_URL + '?' + params.toString();
+  } catch(e) {}
+}
+
+// ── UI HELPERS ────────────────────────────────────────
+function hideBalls(amount) {
+  const p = ALL_PRIZES.find(x => x.amount === amount);
+  if (!p) return;
+  p.ballIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.style.opacity = '0'; el.style.pointerEvents = 'none'; }
+  });
+}
+
+function createGrabbedBall(prize, arm) {
+  try {
+    const cls = {
+      '25%':'ball-25','30%':'ball-30','35%':'ball-35',
+      '40%':'ball-40','45%':'ball-45','50%':'ball-50'
+    }[prize.amount] || 'ball-25';
+    const ball = document.createElement('div');
+    ball.className = 'pb ' + cls;
+    ball.textContent = prize.amount;
+    ball.style.cssText = 'position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);z-index:12;pointer-events:none;animation:none;';
+    arm.appendChild(ball);
+    return ball;
+  } catch(e) { return null; }
+}
+
+function showLastPrize(amount, code) {
+  document.getElementById('lastPrizeBox').style.display = 'block';
+  document.getElementById('lastPrizeAmount').textContent = amount;
+  document.getElementById('lastPrizeCode').textContent   = code;
+  curCode = code;
+}
+
+function openModal(p) {
+  curCode = p.code;
+  document.getElementById('mEmoji').textContent = p.emoji;
+  document.getElementById('mPrize').textContent = p.amount;
+  document.getElementById('mDesc').textContent  = p.desc;
+  document.getElementById('mCode').textContent  = p.code;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+document.getElementById('modalOverlay').addEventListener('click', e => {
+  if (e.target.id === 'modalOverlay') closeModal();
+});
+
+function copyCode() {
+  navigator.clipboard.writeText(curCode)
+    .then(() => showToast('✓ "' + curCode + '" copiato!'))
+    .catch(() => showToast('Copia: ' + curCode));
+}
+
+function copyLastCode() {
+  const code = document.getElementById('lastPrizeCode').textContent;
+  navigator.clipboard.writeText(code)
+    .then(() => showToast('✓ "' + code + '" copiato!'))
+    .catch(() => showToast('Copia: ' + code));
+}
+
+let toastT;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastT);
+  toastT = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+function fireParticles() {
+  const colors = ['#FF2D78','#FFE500','#ffffff','#00c97a','#ff9800'];
+  const ox = window.innerWidth / 2, oy = window.innerHeight * 0.42;
+  for (let i = 0; i < 28; i++) {
+    const a = Math.random()*Math.PI*2, d = 70+Math.random()*140, sz = 6+Math.random()*9;
+    const p = document.createElement('div');
+    p.style.cssText = `position:fixed;border-radius:50%;pointer-events:none;z-index:9000;
+      width:${sz}px;height:${sz}px;background:${colors[Math.floor(Math.random()*colors.length)]};
+      left:${ox}px;top:${oy}px;
+      --dx:${Math.cos(a)*d}px;--dy:${Math.sin(a)*d}px;
+      animation:pfly .85s ease forwards;`;
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 900);
+  }
+}
+</script>
+<style>
+@keyframes pfly {
+  0%   { transform:translate(0,0) scale(1); opacity:1 }
+  100% { transform:translate(var(--dx),var(--dy)) scale(0); opacity:0 }
+}
+</style>
+</body>
+</html>
