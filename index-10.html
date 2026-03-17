@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Yelodie × Cosmo Prof Bologna</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <span class="event-tag">✦ Evento Esclusivo ✦</span>
+      <h1 class="hero-title">
+        YELODIE
+        <span class="accent">COSMO PROF</span>
+      </h1>
+      <p class="hero-subtitle">Bologna · Fiera</p>
+      <div class="hero-info">
+        <div class="info-block">
+          <span class="info-label">Edizione</span>
+          <span class="info-value">2026</span>
+        </div>
+        <div class="info-block">
+          <span class="info-label">Location</span>
+          <span class="info-value">Bologna</span>
+        </div>
+        <div class="info-block">
+          <span class="info-label">Brand</span>
+          <span class="info-value">Yelodie</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      🎮 GIOCA E VINCI
+      <div class="scroll-arrow">↓</div>
+    </div>
+  </section>
+
+  <!-- ARCADE -->
+  <section class="arcade-section">
+    <span class="section-label">✦ Mini Gioco ✦</span>
+    <h2 class="section-title">PESCA<br>LO SCONTO</h2>
+    <p class="section-desc">
+      Hai già il <strong>20% garantito</strong>! Premi GIOCA e pesca uno sconto extra — puoi arrivare fino al <strong>50%!</strong>
+    </p>
+
+    <div class="machine-wrapper">
+      <div class="machine" id="machine">
+
+        <div class="machine-top">
+          <span class="machine-brand">YELODIE CLAW</span>
+          <div class="machine-lights">
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+            <div class="light"></div>
+          </div>
+        </div>
+
+        <div class="machine-glass" id="glass">
+          <div class="claw-rail"></div>
+          <div class="claw-arm" id="clawArm">
+            <div class="claw-wire" id="clawWire"></div>
+            <div class="claw-head">
+              <div class="claw-prong lp"></div>
+              <div class="claw-prong mp"></div>
+              <div class="claw-prong rp"></div>
+            </div>
+          </div>
+          <!-- Prize balls — 6 tiers -->
+          <div class="pb ball-25"  id="b25a" style="left:6%;bottom:62%">25%</div>
+          <div class="pb ball-25"  id="b25b" style="left:30%;bottom:45%">25%</div>
+          <div class="pb ball-25"  id="b25c" style="left:54%;bottom:58%">25%</div>
+          <div class="pb ball-25"  id="b25d" style="left:72%;bottom:40%">25%</div>
+          <div class="pb ball-30"  id="b30a" style="left:14%;bottom:26%">30%</div>
+          <div class="pb ball-30"  id="b30b" style="left:60%;bottom:24%">30%</div>
+          <div class="pb ball-35"  id="b35"  style="left:38%;bottom:12%">35%</div>
+          <div class="pb ball-40"  id="b40"  style="left:76%;bottom:10%">40%</div>
+          <div class="pb ball-45"  id="b45"  style="left:22%;bottom:10%">45%</div>
+          <div class="pb ball-50"  id="b50"  style="left:50%;bottom:6%">50%</div>
+        </div>
+
+        <div class="machine-bottom">
+          <button class="play-btn" id="playBtn" onclick="startClaw()">🎮 GIOCA</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- No win message -->
+    <div class="no-win-box" id="noWinBox" style="display:none;">
+      <p class="no-win-text" id="noWinText">Non hai vinto! Riprova per il 30% 🎯</p>
+    </div>
+
+    <!-- Ultimo premio vinto -->
+    <div class="last-prize-box" id="lastPrizeBox" style="display:none;">
+      <div class="last-prize-label">🏆 SCONTO EXTRA VINTO</div>
+      <div class="last-prize-amount" id="lastPrizeAmount">25%</div>
+      <div class="last-prize-sub">Sommalo al tuo 20% garantito!</div>
+      <div class="last-prize-code" id="lastPrizeCode" onclick="copyLastCode()">YELODIE5OFF</div>
+      <p class="copy-hint">Tocca il codice per copiarlo</p>
+    </div>
+
+  </section>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-bar"></div>
+      <div class="modal-emoji" id="mEmoji">🎉</div>
+      <div class="modal-title">HAI VINTO!</div>
+      <div class="modal-prize" id="mPrize">25%</div>
+      <p class="modal-desc" id="mDesc">Usa il codice su yelodie.it</p>
+      <div class="modal-code-label">IL TUO CODICE SCONTO</div>
+      <div class="modal-code" id="mCode" onclick="copyCode()">YELODIE5OFF</div>
+      <p class="copy-hint">Tocca per copiare</p>
+      <button class="modal-close" onclick="closeModal()">Chiudi →</button>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">✓ Copiato!</div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Yelodie · Cosmo Prof Bologna</p>
+    <p>Codici validi su <a href="https://yelodie.it">yelodie.it</a></p>
+  </footer>
+
+<script>
+const KEY     = 'yelodie_plays';
+const KEY_WON = 'yelodie_won';
+
+let plays   = parseInt(localStorage.getItem(KEY) || '0');
+let wonList = (localStorage.getItem(KEY_WON) || '').split(',').filter(Boolean);
+let busy    = false;
+let curCode = '';
+
+const ALL_PRIZES = [
+  { amount:'50%',  code:'YELODIE50PCT',  desc:'INCREDIBILE! Hai vinto il 50% extra! Totale: 50% su tutto!', emoji:'👑', ballIds:['b50'],         check: n => n % 100000 === 0 },
+  { amount:'45%',  code:'YELODIE45PCT',  desc:'Fantastico! 45% extra sul sito Yelodie!',                   emoji:'🔥', ballIds:['b45'],         check: n => n % 10000  === 0 },
+  { amount:'40%',  code:'YELODIE40PCT',  desc:'Wow! Hai vinto il 40% di sconto extra!',                    emoji:'💎', ballIds:['b40'],         check: n => n % 3000   === 0 },
+  { amount:'35%',  code:'YELODIE35PCT',  desc:'Ottimo! 35% extra da usare su yelodie.it!',                 emoji:'⭐', ballIds:['b35'],         check: n => n % 1000   === 0 },
+  { amount:'30%',  code:'YELODIE30BOLD', desc:'Bravo! Hai pescato il 30% di sconto extra!',                emoji:'🎯', ballIds:['b30a','b30b'], check: n => n % 100    === 0 },
+  { amount:'25%',  code:'YELODIE25OFF',  desc:'Hai pescato il 25% extra! Sommalo al tuo 20%!',             emoji:'🎉', ballIds:['b25a','b25b','b25c','b25d'], check: null },
+];
+
+let nextBase = plays + 3 + Math.floor(Math.random() * 2);
+
+wonList.forEach(amt => hideBalls(amt));
+
+const lastWon = localStorage.getItem('yelodie_last_won');
+if (lastWon) {
+  try { const lw = JSON.parse(lastWon); showLastPrize(lw.amount, lw.code); } catch(e) {}
+}
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+function hideBalls(amount) {
+  const p = ALL_PRIZES.find(x => x.amount === amount);
+  if (!p) return;
+  p.ballIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) { el.style.opacity = '0'; el.style.pointerEvents = 'none'; }
+  });
+}
+
+function getAvailablePrizes() {
+  return ALL_PRIZES.filter(p => !wonList.includes(p.amount));
+}
+
+function getNextTarget() {
+  const avail = getAvailablePrizes();
+  return avail.length ? avail[avail.length - 1] : null;
+}
+
+function getPrize(n) {
+  const avail = getAvailablePrizes();
+  if (!avail.length) return null;
+  // Check big prizes first
+  for (let i = 0; i < 5; i++) {
+    const p = ALL_PRIZES[i];
+    if (!wonList.includes(p.amount) && p.check && p.check(n)) return p;
+  }
+  // Base prize 25%
+  const base = ALL_PRIZES[5];
+  if (!wonList.includes('25%') && n >= nextBase) {
+    nextBase = n + 3 + Math.floor(Math.random() * 2);
+    return base;
+  }
+  return null;
+}
+
+async function startClaw() {
+  if (busy) return;
+  busy = true;
+
+  const btn   = document.getElementById('playBtn');
+  const arm   = document.getElementById('clawArm');
+  const wire  = document.getElementById('clawWire');
+  const mach  = document.getElementById('machine');
+  const glass = document.getElementById('glass');
+
+  document.getElementById('noWinBox').style.display = 'none';
+
+  btn.disabled = true;
+  btn.className = 'play-btn';
+  btn.textContent = '⏳ Pescando...';
+
+  plays++;
+  localStorage.setItem(KEY, plays);
+
+  const prize = getPrize(plays);
+
+  const gw = glass.offsetWidth;
+  const offset = (0.15 + Math.random() * 0.68) * gw - gw / 2;
+  arm.style.transition = 'transform .55s cubic-bezier(.25,.46,.45,.94)';
+  arm.style.transform  = `translateX(calc(-50% + ${offset}px))`;
+  await sleep(620);
+
+  wire.style.transition = 'height .5s ease-in-out';
+  wire.style.height = '155px';
+  await sleep(560);
+
+  arm.classList.add('grab');
+  await sleep(340);
+
+  if (prize) {
+    const grabbed = createGrabbedBall(prize, arm);
+    wire.style.height = '28px';
+    await sleep(580);
+    mach.classList.add('shake');
+    await sleep(430);
+    mach.classList.remove('shake');
+    arm.classList.remove('grab');
+    arm.style.transition = 'transform .45s cubic-bezier(.25,.46,.45,.94)';
+    arm.style.transform  = 'translateX(-50%)';
+    await sleep(500);
+    if (grabbed) grabbed.remove();
+
+    wonList.push(prize.amount);
+    localStorage.setItem(KEY_WON, wonList.join(','));
+    localStorage.setItem('yelodie_last_won', JSON.stringify({amount: prize.amount, code: prize.code}));
+    hideBalls(prize.amount);
+    fireParticles();
+    openModal(prize);
+    showLastPrize(prize.amount, prize.code);
+
+  } else {
+    wire.style.height = '28px';
+    await sleep(580);
+    mach.classList.add('shake');
+    await sleep(430);
+    mach.classList.remove('shake');
+    arm.classList.remove('grab');
+    arm.style.transition = 'transform .45s cubic-bezier(.25,.46,.45,.94)';
+    arm.style.transform  = 'translateX(-50%)';
+    await sleep(420);
+
+    const next = getNextTarget();
+    const noWinBox  = document.getElementById('noWinBox');
+    const noWinText = document.getElementById('noWinText');
+    noWinText.textContent = next
+      ? `Non hai vinto! Riprova per il ${next.amount} 🎯`
+      : 'Hai già vinto tutti i premi! 🏆';
+    noWinBox.style.display = 'block';
+
+    btn.className = 'play-btn retry-btn';
+    btn.textContent = '🔄 RITENTA';
+  }
+
+  btn.disabled = false;
+  busy = false;
+}
+
+function createGrabbedBall(prize, arm) {
+  try {
+    const cls = prize.amount === '25%' ? 'ball-25' : prize.amount === '30%' ? 'ball-30' : prize.amount === '35%' ? 'ball-35' : prize.amount === '40%' ? 'ball-40' : prize.amount === '45%' ? 'ball-45' : 'ball-50';
+    const ball = document.createElement('div');
+    ball.className = 'pb ' + cls;
+    ball.textContent = prize.amount;
+    ball.style.cssText = 'position:absolute;bottom:0;left:50%;transform:translateX(-50%);z-index:12;pointer-events:none;animation:none;';
+    arm.appendChild(ball);
+    return ball;
+  } catch(e) { return null; }
+}
+
+function showLastPrize(amount, code) {
+  document.getElementById('lastPrizeBox').style.display = 'block';
+  document.getElementById('lastPrizeAmount').textContent = amount;
+  document.getElementById('lastPrizeCode').textContent   = code;
+  curCode = code;
+}
+
+function openModal(p) {
+  curCode = p.code;
+  document.getElementById('mEmoji').textContent = p.emoji;
+  document.getElementById('mPrize').textContent = p.amount;
+  document.getElementById('mDesc').textContent  = p.desc;
+  document.getElementById('mCode').textContent  = p.code;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  const btn = document.getElementById('playBtn');
+  btn.className = 'play-btn';
+  btn.textContent = '🎮 GIOCA';
+}
+
+document.getElementById('modalOverlay').addEventListener('click', e => {
+  if (e.target.id === 'modalOverlay') closeModal();
+});
+
+function copyCode() {
+  navigator.clipboard.writeText(curCode)
+    .then(() => showToast('✓ "' + curCode + '" copiato!'))
+    .catch(() => showToast('Copia: ' + curCode));
+}
+
+function copyLastCode() {
+  const code = document.getElementById('lastPrizeCode').textContent;
+  navigator.clipboard.writeText(code)
+    .then(() => showToast('✓ "' + code + '" copiato!'))
+    .catch(() => showToast('Copia: ' + code));
+}
+
+let toastT;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastT);
+  toastT = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+function fireParticles() {
+  const colors = ['#FF2D78','#FFE500','#ffffff','#00c97a','#ff9800'];
+  const ox = window.innerWidth / 2, oy = window.innerHeight * 0.42;
+  for (let i = 0; i < 26; i++) {
+    const a = Math.random()*Math.PI*2, d = 70+Math.random()*130, sz = 6+Math.random()*9;
+    const p = document.createElement('div');
+    p.style.cssText = `position:fixed;border-radius:50%;pointer-events:none;z-index:9000;
+      width:${sz}px;height:${sz}px;background:${colors[Math.floor(Math.random()*colors.length)]};
+      left:${ox}px;top:${oy}px;
+      --dx:${Math.cos(a)*d}px;--dy:${Math.sin(a)*d}px;
+      animation:pfly .85s ease forwards;`;
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 900);
+  }
+}
+</script>
+<style>
+@keyframes pfly {
+  0%   { transform:translate(0,0) scale(1); opacity:1 }
+  100% { transform:translate(var(--dx),var(--dy)) scale(0); opacity:0 }
+}
+</style>
+</body>
+</html>
