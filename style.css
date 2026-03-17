@@ -93,7 +93,7 @@ body::after {
   font-size: clamp(.65rem, 1.8vw, .88rem);
   letter-spacing: .26em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.45);
+  color: #ffffff;
   margin-top: 18px;
   animation: fdDown .7s ease .2s both;
 }
@@ -110,7 +110,7 @@ body::after {
   font-size: .58rem;
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.3);
+  color: #ffffff;
   margin-bottom: 4px;
 }
 .info-value {
@@ -554,7 +554,7 @@ body::after {
   font-size: .54rem;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.22);
+  color: #ffffff;
   margin-top: 6px;
   margin-bottom: 20px;
 }
@@ -760,7 +760,7 @@ footer a { color: var(--pink); text-decoration: none; }
   font-size: .6rem;
   letter-spacing: .25em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.4);
+  color: #ffffff;
   margin-bottom: 8px;
 }
 .last-prize-amount {
